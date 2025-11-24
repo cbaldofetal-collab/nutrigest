@@ -1,0 +1,481 @@
+%PDF-1.3
+%ºß¬à
+3 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 4 0 R
+>>
+endobj
+4 0 obj
+<<
+/Length 4213
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 20 Tf
+23. TL
+0.173 0.243 0.314 rg
+149.9377952755905596 785.1970866141732586 Td
+(Relatório de Glicemia - GlicoGest) Tj
+ET
+BT
+/F1 14 Tf
+16.0999999999999979 TL
+0.173 0.243 0.314 rg
+56.6929133858267775 728.5041732283464171 Td
+(Dados do Paciente) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0.204 0.286 0.369 rg
+56.6929133858267775 700.15771653543311 Td
+(Nome: Maria Silva) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0.204 0.286 0.369 rg
+56.6929133858267775 680.3151968503937042 Td
+(Email: maria.silva@example.com) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0.204 0.286 0.369 rg
+56.6929133858267775 660.4726771653542983 Td
+(Semana Gestacional: 24) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0.204 0.286 0.369 rg
+56.6929133858267775 640.6301574803148924 Td
+(Meta Jejum: 95 mg/dL) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0.204 0.286 0.369 rg
+56.6929133858267775 620.7876377952754865 Td
+(Meta Pós-prandial: 140 mg/dL) Tj
+ET
+BT
+/F1 14 Tf
+16.0999999999999979 TL
+0.173 0.243 0.314 rg
+56.6929133858267775 578.2679527559055259 Td
+(Estatísticas Gerais) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0.204 0.286 0.369 rg
+56.6929133858267775 549.9214960629921052 Td
+(Total de Registros: 3) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0.204 0.286 0.369 rg
+56.6929133858267775 530.0789763779526993 Td
+(Média Geral: 121 mg/dL) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0.204 0.286 0.369 rg
+56.6929133858267775 510.2364566929133503 Td
+(Valor Mínimo: 110 mg/dL) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0.204 0.286 0.369 rg
+56.6929133858267775 490.3939370078739444 Td
+(Valor Máximo: 144 mg/dL) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0.204 0.286 0.369 rg
+56.6929133858267775 470.5514173228345953 Td
+(Registros em Jejum: 0) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0.204 0.286 0.369 rg
+56.6929133858267775 450.7088976377952463 Td
+(Registros Pós-prandial: 3) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0.204 0.286 0.369 rg
+56.6929133858267775 430.8663779527558404 Td
+(Média Pós-prandial: 121 mg/dL) Tj
+ET
+BT
+/F1 14 Tf
+16.0999999999999979 TL
+0.173 0.243 0.314 rg
+56.6929133858267775 388.3466929133857661 Td
+(Registros Detalhados) Tj
+ET
+0.2 0.29 0.37 rg
+56.6929133858267775 374.1734645669290558 481.8897637795275841 -22.677165354330711 re
+f
+BT
+/F1 10 Tf
+11.5 TL
+1. g
+62.3622047244094517 360.0002362204724022 Td
+(Data) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+1. g
+127.5590551181102512 360.0002362204724022 Td
+(Hora) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+1. g
+184.2519685039370358 360.0002362204724022 Td
+(Valor) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+1. g
+226.7716535433071101 360.0002362204724022 Td
+(Tipo) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+1. g
+311.8110236220472871 360.0002362204724022 Td
+(Observações) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0.204 0.286 0.369 rg
+62.3622047244094517 331.6537795275589815 Td
+(17/11/2025) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0.204 0.286 0.369 rg
+127.5590551181102512 331.6537795275589815 Td
+(21:49) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0.204 0.286 0.369 rg
+184.2519685039370358 331.6537795275589815 Td
+(110 mg/dL) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0.204 0.286 0.369 rg
+226.7716535433071101 331.6537795275589815 Td
+(Pós-prandial) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0.204 0.286 0.369 rg
+62.3622047244094517 311.8112598425195756 Td
+(17/11/2025) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0.204 0.286 0.369 rg
+127.5590551181102512 311.8112598425195756 Td
+(21:49) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0.204 0.286 0.369 rg
+184.2519685039370358 311.8112598425195756 Td
+(144 mg/dL) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0.204 0.286 0.369 rg
+226.7716535433071101 311.8112598425195756 Td
+(Pós-prandial) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0.204 0.286 0.369 rg
+62.3622047244094517 291.9687401574802834 Td
+(17/11/2025) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0.204 0.286 0.369 rg
+127.5590551181102512 291.9687401574802834 Td
+(21:49) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0.204 0.286 0.369 rg
+184.2519685039370358 291.9687401574802834 Td
+(110 mg/dL) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0.204 0.286 0.369 rg
+226.7716535433071101 291.9687401574802834 Td
+(Pós-prandial) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0.498 0.549 0.553 rg
+212.6877952755905596 19.8427559055116944 Td
+(Relatório gerado em 18/11/2025 05:46) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0.498 0.549 0.553 rg
+153.9377952755905028 5.6695275590550409 Td
+(GlicoGest - Monitoramento Inteligente para Diabetes Gestacional) Tj
+ET
+endstream
+endobj
+1 0 obj
+<</Type /Pages
+/Kids [3 0 R ]
+/Count 1
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+6 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+7 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+8 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-BoldOblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+9 0 obj
+<<
+/Type /Font
+/BaseFont /Courier
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+10 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+11 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+12 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-BoldOblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+13 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Roman
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+14 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+15 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Italic
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+16 0 obj
+<<
+/Type /Font
+/BaseFont /Times-BoldItalic
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+17 0 obj
+<<
+/Type /Font
+/BaseFont /ZapfDingbats
+/Subtype /Type1
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+18 0 obj
+<<
+/Type /Font
+/BaseFont /Symbol
+/Subtype /Type1
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+2 0 obj
+<<
+/ProcSet [/PDF /Text /ImageB /ImageC /ImageI]
+/Font <<
+/F1 5 0 R
+/F2 6 0 R
+/F3 7 0 R
+/F4 8 0 R
+/F5 9 0 R
+/F6 10 0 R
+/F7 11 0 R
+/F8 12 0 R
+/F9 13 0 R
+/F10 14 0 R
+/F11 15 0 R
+/F12 16 0 R
+/F13 17 0 R
+/F14 18 0 R
+>>
+/XObject <<
+>>
+>>
+endobj
+19 0 obj
+<<
+/Producer (jsPDF 2.5.2)
+/CreationDate (D:20251118054643-03'00')
+>>
+endobj
+20 0 obj
+<<
+/Type /Catalog
+/Pages 1 0 R
+/OpenAction [3 0 R /FitH null]
+/PageLayout /OneColumn
+>>
+endobj
+xref
+0 21
+0000000000 65535 f 
+0000004417 00000 n 
+0000006234 00000 n 
+0000000015 00000 n 
+0000000152 00000 n 
+0000004474 00000 n 
+0000004599 00000 n 
+0000004729 00000 n 
+0000004862 00000 n 
+0000004999 00000 n 
+0000005122 00000 n 
+0000005251 00000 n 
+0000005383 00000 n 
+0000005519 00000 n 
+0000005647 00000 n 
+0000005774 00000 n 
+0000005903 00000 n 
+0000006036 00000 n 
+0000006138 00000 n 
+0000006482 00000 n 
+0000006568 00000 n 
+trailer
+<<
+/Size 21
+/Root 20 0 R
+/Info 19 0 R
+/ID [ <D57B4A2D06B5FA6EB3FDE1ECFED321EB> <D57B4A2D06B5FA6EB3FDE1ECFED321EB> ]
+>>
+startxref
+6672
+%%EOF

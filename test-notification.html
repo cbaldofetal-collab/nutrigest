@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Testar Notificação</title>
+</head>
+<body>
+    <h1>Testar Notificação Pós-Prandial</h1>
+    <button onclick="testNotification()">Testar Notificação Agora</button>
+    
+    <script>
+        async function testNotification() {
+            const permission = await Notification.requestPermission();
+            if (permission === 'granted') {
+                new Notification('Lembrete de Glicemia - Pós-almoço', {
+                    body: 'Hora de medir sua glicemia! 🩸',
+                    icon: '/icon-192x192.png',
+                    tag: 'test-glucose-reminder',
+                    requireInteraction: true
+                });
+                
+                if (navigator.vibrate) {
+                    navigator.vibrate([200, 100, 200]);
+                }
+            } else {
+                alert('Por favor, permita notificações para testar');
+            }
+        }
+    </script>
+</body>
+</html>

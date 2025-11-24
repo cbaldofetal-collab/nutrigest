@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "routes": [
+    { "src": "/registro-funcional.html", "dest": "/registro-funcional.html" },
+    { "src": "/teste-simples.html", "dest": "/teste-simples.html" },
+    { "src": "/api/(.*)", "dest": "/api/vercel.js" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}

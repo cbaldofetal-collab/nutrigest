@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TESTE - Leitor de Planilhas</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f0f0f0; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px; }
+        .success { background: #d4edda; border: 1px solid #c3e6cb; color: #155724; padding: 15px; border-radius: 5px; margin: 10px 0; }
+        .error { background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; padding: 15px; border-radius: 5px; margin: 10px 0; }
+        .info { background: #d1ecf1; border: 1px solid #bee5eb; color: #0c5460; padding: 15px; border-radius: 5px; margin: 10px 0; }
+        button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px; }
+        button:hover { background: #0056b3; }
+        pre { background: #f8f9fa; padding: 10px; border-radius: 5px; overflow: auto; font-size: 12px; }
+        .test-result { margin: 10px 0; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Teste de Roteamento - Leitor de Planilhas</h1>
+        <p>Este teste vai verificar o que está funcionando e o que não está.</p>
+        
+        <div id="status" class="info">
+            <strong>Status:</strong> Iniciando testes...
+        </div>
+
+        <div id="results"></div>
+
+        <div style="margin-top: 20px;">
+            <button onclick="testarTudo()">🔄 Testar Tudo</button>
+            <button onclick="testarApi()">🔌 Testar API</button>
+            <button onclick="testarRegistro()">📝 Testar Registro</button>
+            <button onclick="limparResultados()">🗑️ Limpar</button>
+        </div>
+
+        <div id="debug-info" style="margin-top: 20px;">
+            <h3>Informações do Sistema:</h3>
+            <pre id="system-info"></pre>
+        </div>
+    </div>
+
+    <script>
+        // Informações do sistema
+        function mostrarInfoSistema() {
+            const info = {
+                url: window.location.href,
+                hostname: window.location.hostname,
+                pathname: window.location.pathname,
+                userAgent: navigator.userAgent,
+                timestamp: new Date().toISOString(),
+                online: navigator.onLine,
+                cookieEnabled: navigator.cookieEnabled,
+                localStorage: typeof localStorage !== 'undefined',
+                sessionStorage: typeof sessionStorage !== 'undefined'
+            };
+            document.getElementById('system-info').textContent = JSON.stringify(info, null, 2);
+        }
+
+        // Função para adicionar resultado
+        function adicionarResultado(titulo, sucesso, mensagem, dados = null) {
+            const results = document.getElementById('results');
+            const div = document.createElement('div');
+            div.className = `test-result ${sucesso ? 'success' : 'error'}`;
+            
+            let html = `<strong>${titulo}:</strong> ${mensagem}`;
+            if (dados) {
+                html += `<br><pre style="margin-top: 10px;">${JSON.stringify(dados, null, 2)}</pre>`;
+            }
+            
+            div.innerHTML = html;
+            results.appendChild(div);
+        }
+
+        // Testar API de registro
+        async function testarApi() {
+            try {
+                adicionarResultado('API Teste', true, 'Testando endpoint de registro...');
+                
+                const response = await fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: 'Teste Usuario',
+                        email: 'teste' + Date.now() + '@example.com',
+                        password: 'teste123'
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    adicionarResultado('API Registro', true, '✅ API funcionando perfeitamente!', data);
+                } else {
+                    adicionarResultado('API Registro', false, '❌ Erro na API: ' + response.status, data);
+                }
+            } catch (error) {
+                adicionarResultado('API Registro', false, '❌ Erro ao conectar com API: ' + error.message);
+            }
+        }
+
+        // Testar página de registro
+        async function testarRegistro() {
+            try {
+                adicionarResultado('Página Registro', true, 'Testando página de registro...');
+                
+                const response = await fetch('/register');
+                const text = await response.text();
+                
+                if (response.ok) {
+                    if (text.includes('Rota não encontrada')) {
+                        adicionarResultado('Página Registro', false, '❌ Página mostra "Rota não encontrada"');
+                    } else if (text.includes('id="root"')) {
+                        adicionarResultado('Página Registro', true, '✅ Página carregando (React app)');
+                    } else {
+                        adicionarResultado('Página Registro', true, '✅ Página carregando (conteúdo encontrado)');
+                    }
+                } else {
+                    adicionarResultado('Página Registro', false, '❌ Erro HTTP: ' + response.status);
+                }
+            } catch (error) {
+                adicionarResultado('Página Registro', false, '❌ Erro ao carregar página: ' + error.message);
+            }
+        }
+
+        // Testar rota simples
+        async function testarSimples() {
+            try {
+                adicionarResultado('Página Simples', true, 'Testando /simple-test...');
+                
+                const response = await fetch('/simple-test');
+                const text = await response.text();
+                
+                if (response.ok) {
+                    adicionarResultado('Página Simples', true, '✅ Rota /simple-test carregando');
+                } else {
+                    adicionarResultado('Página Simples', false, '❌ Erro na rota /simple-test: ' + response.status);
+                }
+            } catch (error) {
+                adicionarResultado('Página Simples', false, '❌ Erro: ' + error.message);
+            }
+        }
+
+        // Testar tudo
+        async function testarTudo() {
+            document.getElementById('status').innerHTML = '<strong>Status:</strong> Executando testes...';
+            limparResultados();
+            
+            await testarApi();
+            await testarRegistro();
+            await testarSimples();
+            
+            document.getElementById('status').innerHTML = '<strong>Status:</strong> Testes completos!';
+        }
+
+        // Limpar resultados
+        function limparResultados() {
+            document.getElementById('results').innerHTML = '';
+        }
+
+        // Inicializar
+        window.onload = function() {
+            mostrarInfoSistema();
+            testarTudo();
+        };
+    </script>
+</body>
+</html>

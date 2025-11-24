@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Upload Debug</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 600px; margin: 0 auto; }
+        .debug-info { background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 10px 0; }
+        .error { color: red; }
+        .success { color: green; }
+        .info { color: blue; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Teste de Upload Debug</h1>
+        
+        <div class="debug-info">
+            <h3>Informações do Sistema:</h3>
+            <p><strong>API URL:</strong> <span id="apiUrl"></span></p>
+            <p><strong>Token JWT:</strong> <span id="tokenStatus"></span></p>
+            <p><strong>Status do Servidor:</strong> <span id="serverStatus">Verificando...</span></p>
+        </div>
+
+        <h2>Upload de Arquivo</h2>
+        <form id="uploadForm">
+            <input type="file" id="fileInput" accept=".xlsx,.xls,.csv" required>
+            <br><br>
+            <button type="submit">Enviar Arquivo</button>
+        </form>
+
+        <div id="result" class="debug-info" style="display: none;">
+            <h3>Resultado:</h3>
+            <div id="resultContent"></div>
+        </div>
+
+        <div id="errorLog" class="debug-info" style="display: none;">
+            <h3>Erros:</h3>
+            <div id="errorContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Configurações
+        const API_URL = 'http://localhost:3002';
+        const API_ENDPOINT = '/api/sheets/upload';
+        
+        // Exibir informações iniciais
+        document.getElementById('apiUrl').textContent = API_URL + API_ENDPOINT;
+        
+        // Verificar token JWT
+        const token = localStorage.getItem('token');
+        document.getElementById('tokenStatus').textContent = token ? 'Presente' : 'Não encontrado';
+        
+        // Verificar status do servidor
+        async function checkServerStatus() {
+            try {
+                const response = await fetch(`${API_URL}/api/health`);
+                const data = await response.json();
+                document.getElementById('serverStatus').innerHTML = '<span class="success">Servidor online</span>';
+                console.log('Server status:', data);
+            } catch (error) {
+                document.getElementById('serverStatus').innerHTML = '<span class="error">Servidor offline</span>';
+                console.error('Server error:', error);
+            }
+        }
+        
+        checkServerStatus();
+        
+        // Handle form submission
+        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                showError('Nenhum arquivo selecionado');
+                return;
+            }
+            
+            console.log('File selected:', {
+                name: file.name,
+                type: file.type,
+                size: file.size,
+                lastModified: new Date(file.lastModified)
+            });
+            
+            const formData = new FormData();
+            formData.append('file', file);
+            
+            console.log('FormData created');
+            console.log('FormData entries:');
+            for (let [key, value] of formData.entries()) {
+                console.log(key, value);
+            }
+            
+            try {
+                console.log('Starting upload to:', API_URL + API_ENDPOINT);
+                
+                const headers = {};
+                if (token) {
+                    headers['Authorization'] = `Bearer ${token}`;
+                }
+                
+                console.log('Request headers:', headers);
+                
+                const response = await fetch(API_URL + API_ENDPOINT, {
+                    method: 'POST',
+                    headers: headers,
+                    body: formData
+                });
+                
+                console.log('Response received:', {
+                    status: response.status,
+                    statusText: response.statusText,
+                    headers: Object.fromEntries(response.headers.entries())
+                });
+                
+                const responseText = await response.text();
+                console.log('Raw response:', responseText);
+                
+                let responseData;
+                try {
+                    responseData = JSON.parse(responseText);
+                } catch (e) {
+                    responseData = { message: responseText };
+                }
+                
+                console.log('Parsed response:', responseData);
+                
+                if (response.ok) {
+                    showSuccess(`Upload bem-sucedido! ${JSON.stringify(responseData, null, 2)}`);
+                } else {
+                    showError(`Erro ${response.status}: ${JSON.stringify(responseData, null, 2)}`);
+                }
+                
+            } catch (error) {
+                console.error('Upload error:', error);
+                showError(`Erro de rede: ${error.message}`);
+            }
+        });
+        
+        function showSuccess(message) {
+            const resultDiv = document.getElementById('result');
+            const resultContent = document.getElementById('resultContent');
+            resultContent.innerHTML = `<span class="success">${message}</span>`;
+            resultDiv.style.display = 'block';
+            document.getElementById('errorLog').style.display = 'none';
+        }
+        
+        function showError(message) {
+            const errorDiv = document.getElementById('errorLog');
+            const errorContent = document.getElementById('errorContent');
+            errorContent.innerHTML = `<span class="error">${message}</span>`;
+            errorDiv.style.display = 'block';
+            document.getElementById('result').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

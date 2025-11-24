@@ -1,0 +1,27 @@
+pode fazer
+services:
+  - type: web
+    name: glicogest-api
+    env: node
+    rootDir: api
+    plan: starter
+    buildCommand: npm install --include=dev
+    startCommand: npm run start:prod
+    autoDeploy: true
+    envVars:
+      - key: NPM_CONFIG_PRODUCTION
+        value: "false"
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: FRONTEND_URL
+        value: https://seu-frontend-vercel.app
+      - key: JWT_SECRET
+        generateValue: true
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        optional: true

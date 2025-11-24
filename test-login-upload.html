@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Login and Upload</title>
+</head>
+<body>
+    <h1>Test Login and File Upload</h1>
+    
+    <div>
+        <h2>Step 1: Login</h2>
+        <button onclick="login()">Login with demo credentials</button>
+        <div id="loginResult"></div>
+    </div>
+    
+    <div style="margin-top: 20px;">
+        <h2>Step 2: Upload File</h2>
+        <input type="file" id="fileInput" accept=".csv,.xlsx,.xls">
+        <button onclick="uploadFile()">Upload File</button>
+        <div id="uploadResult"></div>
+    </div>
+
+    <script>
+        let authToken = '';
+
+        async function login() {
+            try {
+                const response = await fetch('http://localhost:3003/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: 'demo@example.com',
+                        password: 'demo123'
+                    })
+                });
+
+                const result = await response.json();
+                console.log('Login response:', result);
+                
+                if (response.ok) {
+                    authToken = result.tokens.accessToken;
+                    document.getElementById('loginResult').innerHTML = 
+                        `<p style="color: green;">Login successful! Token: ${authToken.substring(0, 20)}...</p>`;
+                } else {
+                    document.getElementById('loginResult').innerHTML = 
+                        `<p style="color: red;">Login failed: ${result.message}</p>`;
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                document.getElementById('loginResult').innerHTML = 
+                    `<p style="color: red;">Login error: ${error.message}</p>`;
+            }
+        }
+
+        async function uploadFile() {
+            if (!authToken) {
+                alert('Please login first');
+                return;
+            }
+
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                alert('Please select a file');
+                return;
+            }
+
+            console.log('Uploading file:', {
+                name: file.name,
+                type: file.type,
+                size: file.size
+            });
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                console.log('Sending upload request with token:', authToken.substring(0, 20) + '...');
+                const response = await fetch('http://localhost:3003/api/sheets/upload', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: formData
+                });
+
+                console.log('Upload response status:', response.status);
+                const result = await response.json();
+                console.log('Upload response:', result);
+                
+                if (response.ok) {
+                    document.getElementById('uploadResult').innerHTML = 
+                        `<p style="color: green;">Upload successful: ${result.message}</p>`;
+                } else {
+                    document.getElementById('uploadResult').innerHTML = 
+                        `<p style="color: red;">Upload failed: ${result.message}</p>`;
+                }
+            } catch (error) {
+                console.error('Upload error:', error);
+                document.getElementById('uploadResult').innerHTML = 
+                    `<p style="color: red;">Upload error: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

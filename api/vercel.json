@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "functions": {
+    "api/src/server.ts": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/src/server.ts"
+    }
+  ],
+  "env": {
+    "SUPABASE_URL": "@supabase-url",
+    "SUPABASE_ANON_KEY": "@supabase-anon-key",
+    "SUPABASE_SERVICE_ROLE": "@supabase-service-role",
+    "JWT_SECRET": "@jwt-secret",
+    "JWT_EXPIRES_IN": "15m",
+    "NODE_ENV": "production"
+  }
+}

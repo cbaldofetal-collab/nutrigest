@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Upload</title>
+</head>
+<body>
+    <h1>Test File Upload</h1>
+    <input type="file" id="fileInput" accept=".csv,.xlsx,.xls">
+    <button onclick="uploadFile()">Upload</button>
+    <div id="result"></div>
+
+    <script>
+        async function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                alert('Please select a file');
+                return;
+            }
+
+            console.log('Selected file:', {
+                name: file.name,
+                type: file.type,
+                size: file.size
+            });
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                console.log('Sending request...');
+                const response = await fetch('http://localhost:3003/api/sheets/upload', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer test-token'
+                    },
+                    body: formData
+                });
+
+                console.log('Response status:', response.status);
+                const result = await response.json();
+                console.log('Response:', result);
+                
+                document.getElementById('result').innerHTML = 
+                    `<p style="color: green;">Success: ${result.message}</p>`;
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('result').innerHTML = 
+                    `<p style="color: red;">Error: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

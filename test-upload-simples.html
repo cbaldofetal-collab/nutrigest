@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teste Upload Simples</title>
+</head>
+<body>
+    <h1>Teste de Upload de Arquivo</h1>
+    
+    <div>
+        <h2>1. Faça Login</h2>
+        <button onclick="fazerLogin()">Login Demo</button>
+        <div id="loginResult"></div>
+    </div>
+    
+    <div style="margin-top: 20px;">
+        <h2>2. Escolha um Arquivo</h2>
+        <input type="file" id="fileInput" accept=".csv,.xlsx,.xls">
+        <button onclick="fazerUpload()">Fazer Upload</button>
+        <div id="uploadResult"></div>
+    </div>
+
+    <script>
+        let token = '';
+
+        async function fazerLogin() {
+            try {
+                const response = await fetch('http://localhost:3003/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: 'demo@example.com',
+                        password: 'demo123'
+                    })
+                });
+
+                const result = await response.json();
+                
+                if (response.ok) {
+                    token = result.tokens.accessToken;
+                    document.getElementById('loginResult').innerHTML = 
+                        `<p style="color: green;">✅ Login realizado com sucesso!</p>`;
+                } else {
+                    document.getElementById('loginResult').innerHTML = 
+                        `<p style="color: red;">❌ Erro no login: ${result.message}</p>`;
+                }
+            } catch (error) {
+                document.getElementById('loginResult').innerHTML = 
+                    `<p style="color: red;">❌ Erro de conexão: ${error.message}</p>`;
+            }
+        }
+
+        async function fazerUpload() {
+            if (!token) {
+                alert('Por favor, faça login primeiro');
+                return;
+            }
+
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                alert('Por favor, escolha um arquivo');
+                return;
+            }
+
+            console.log('Enviando arquivo:', file.name, 'Tipo:', file.type, 'Tamanho:', file.size);
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                console.log('Enviando requisição com token:', token.substring(0, 20) + '...');
+                
+                const response = await fetch('http://localhost:3003/api/sheets/upload', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: formData
+                });
+
+                console.log('Status da resposta:', response.status);
+                const result = await response.json();
+                console.log('Resposta completa:', result);
+                
+                if (response.ok) {
+                    document.getElementById('uploadResult').innerHTML = 
+                        `<p style="color: green;">✅ Upload realizado com sucesso!<br>${result.message}</p>`;
+                } else {
+                    document.getElementById('uploadResult').innerHTML = 
+                        `<p style="color: red;">❌ Erro no upload: ${result.message || 'Erro desconhecido'}</p>`;
+                }
+            } catch (error) {
+                console.error('Erro completo:', error);
+                document.getElementById('uploadResult').innerHTML = 
+                    `<p style="color: red;">❌ Erro de conexão: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
