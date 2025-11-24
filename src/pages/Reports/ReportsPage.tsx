@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Download, Calendar, TrendingUp, Target, FileText } from 'lucide-react';
 import { useAuthStore } from '../../stores/authStore';
-import { GlucoseRecord } from '../../types/glicogest.types';
+import { GlucoseRecord } from '../../types/nutrigest.types';
 import { glucoseService } from '../../services/glucoseService';
 
 const ReportsPage: React.FC = () => {

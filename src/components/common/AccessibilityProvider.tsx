@@ -62,7 +62,7 @@ export const AccessibilityProvider: React.FC<AccessibilityProviderProps> = ({ ch
       document.documentElement.classList.add('screen-reader-mode');
       // Add ARIA attributes
       document.documentElement.setAttribute('role', 'application');
-      document.documentElement.setAttribute('aria-label', 'GlicoGest - Monitoramento de Diabetes Gestacional');
+      document.documentElement.setAttribute('aria-label', 'NutriGest - Monitoramento Nutricional para Gestantes');
     } else {
       document.documentElement.classList.remove('screen-reader-mode');
       document.documentElement.removeAttribute('role');

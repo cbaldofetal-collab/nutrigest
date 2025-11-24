@@ -8,7 +8,7 @@ class PDFService {
     doc.setFont('helvetica')
     doc.setFontSize(20)
     doc.setTextColor(44, 62, 80)
-    doc.text('Relatório de Glicemia - GlicoGest', 105, 20, { align: 'center' })
+    doc.text('Relatório de Glicemia - NutriGest', 105, 20, { align: 'center' })
 
     doc.setFontSize(12)
     doc.setTextColor(52, 73, 94)
@@ -96,7 +96,7 @@ class PDFService {
     doc.setFontSize(10)
     doc.setTextColor(127, 140, 141)
     doc.text(`Relatório gerado em ${dataAtual}`, 105, 290, { align: 'center' })
-    doc.text('GlicoGest - Monitoramento Inteligente para Diabetes Gestacional', 105, 295, { align: 'center' })
+    doc.text('NutriGest - Monitoramento Nutricional Inteligente para Gestantes', 105, 295, { align: 'center' })
     return doc
   }
 
@@ -161,7 +161,7 @@ class PDFService {
     doc.setFont('helvetica')
     doc.setFontSize(20)
     doc.setTextColor(44, 62, 80)
-    doc.text('Relatório Clínico - GlicoGest', 105, 20, { align: 'center' })
+    doc.text('Relatório Clínico - NutriGest', 105, 20, { align: 'center' })
 
     doc.setFontSize(12)
     doc.setTextColor(52, 73, 94)

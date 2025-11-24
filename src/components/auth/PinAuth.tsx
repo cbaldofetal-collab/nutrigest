@@ -117,7 +117,7 @@ const PinAuth: React.FC<PinAuthProps> = ({ onSuccess, onBack }) => {
                 <ShieldCheck className="w-8 h-8 text-purple-600" />
               </div>
             </div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">GlicoGest</h1>
+            <h1 className="text-2xl font-bold text-gray-900 mb-2">NutriGest</h1>
             <p className="text-gray-600">Digite seu PIN para acessar</p>
           </div>
 

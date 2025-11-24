@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { supabase } from '../lib/supabase';
-import type { ReminderSettings } from '../types/glicogest.types';
+import type { ReminderSettings } from '../types/nutrigest.types';
 
 interface ReminderState {
   settings: ReminderSettings | null;

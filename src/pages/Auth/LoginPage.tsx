@@ -117,7 +117,7 @@ const LoginPage: React.FC = () => {
           <div className="text-center mb-8">
             <Link to="/" className="flex items-center justify-center space-x-2 mb-4">
               <Heart className="w-10 h-10 text-pink-600" />
-              <span className="text-2xl font-bold text-gray-900">GlicoGest</span>
+              <span className="text-2xl font-bold text-gray-900">NutriGest</span>
             </Link>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">Autenticação Segura</h1>
             <p className="text-gray-600">Digite seu PIN de 4 dígitos</p>
@@ -197,7 +197,7 @@ const LoginPage: React.FC = () => {
         <div className="text-center mb-8">
           <Link to="/" className="flex items-center justify-center space-x-2 mb-4">
             <Heart className="w-10 h-10 text-pink-600" />
-            <span className="text-2xl font-bold text-gray-900">GlicoGest</span>
+            <span className="text-2xl font-bold text-gray-900">NutriGest</span>
           </Link>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Bem-vinda de volta</h1>
           <p className="text-gray-600">Acesse sua conta para monitorar sua saúde</p>

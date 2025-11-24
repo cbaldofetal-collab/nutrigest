@@ -1,4 +1,4 @@
-// Tipos principais do GlicoGest
+// Tipos principais do NutriGest
 
 export interface UserProfile {
   id: string;

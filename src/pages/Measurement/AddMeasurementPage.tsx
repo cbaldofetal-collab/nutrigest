@@ -4,7 +4,7 @@ import { useAuthStore } from '../../stores/authStore';
 import { ArrowLeft, Plus, Target, Clock, Edit3, Save, X } from 'lucide-react';
 import { toast } from 'sonner';
 import { glucoseService } from '../../services/glucoseService';
-import type { MeasurementType } from '../../types/glicogest.types';
+import type { MeasurementType } from '../../types/nutrigest.types';
 
 const AddMeasurementPage: React.FC = () => {
   const navigate = useNavigate();

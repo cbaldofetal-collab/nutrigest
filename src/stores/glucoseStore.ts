@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { supabase, subscribeToGlucoseRecords } from '../lib/supabase';
 import { glucoseService } from '../services/glucoseService';
 import { useAuthStore } from './authStore';
-import type { GlucoseRecord, MeasurementType, GlucoseStats } from '../types/glicogest.types';
+import type { GlucoseRecord, MeasurementType, GlucoseStats } from '../types/nutrigest.types';
 
 interface GlucoseStore {
   records: GlucoseRecord[];

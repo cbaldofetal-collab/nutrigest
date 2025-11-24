@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { API_BASE_URL } from '../config/api';
-import type { UserProfile, AuthUser } from '../types/glicogest.types';
+import type { UserProfile, AuthUser } from '../types/nutrigest.types';
 
 interface AuthState {
   user: AuthUser | null;

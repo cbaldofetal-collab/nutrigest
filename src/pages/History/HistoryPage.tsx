@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Filter, Download, Calendar, TrendingUp, Target } from 'lucide-react';
 import { useAuthStore } from '../../stores/authStore';
 import { useGlucoseStore } from '../../stores/glucoseStore';
-import { GlucoseRecord } from '../../types/glicogest.types';
+import { GlucoseRecord } from '../../types/nutrigest.types';
 
 const HistoryPage: React.FC = () => {
   const navigate = useNavigate();

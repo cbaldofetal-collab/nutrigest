@@ -10,13 +10,13 @@ const WelcomeScreen: React.FC = () => {
   const steps = [
     {
       icon: <Baby className="w-16 h-16 text-purple-600" />,
-      title: "Bem-vinda ao GlicoGest",
-      description: "Seu companheiro digital para monitoramento da diabetes gestacional. Simplifique seu controle glicêmico com segurança e praticidade."
+      title: "Bem-vinda ao NutriGest",
+      description: "Seu companheiro digital para monitoramento nutricional na gestação. Cuide da sua alimentação com segurança e praticidade."
     },
     {
       icon: <Heart className="w-16 h-16 text-pink-600" />,
       title: "Cuide da sua saúde",
-      description: "Registre suas medições de glicose de forma rápida e intuitiva. Receba lembretes personalizados e acompanhe sua evolução."
+      description: "Registre suas refeições e nutrientes de forma rápida e intuitiva. Receba recomendações personalizadas e acompanhe sua evolução."
     },
     {
       icon: <Shield className="w-16 h-16 text-green-600" />,
@@ -111,8 +111,8 @@ const WelcomeScreen: React.FC = () => {
 
         {/* App name */}
         <div className="text-center mt-6">
-          <p className="text-purple-600 font-semibold text-lg">GlicoGest</p>
-          <p className="text-gray-500 text-sm">Monitoramento Inteligente para Diabetes Gestacional</p>
+          <p className="text-teal-600 font-semibold text-lg">NutriGest</p>
+          <p className="text-gray-500 text-sm">Monitoramento Nutricional Inteligente para Gestantes</p>
         </div>
       </div>
     </div>
