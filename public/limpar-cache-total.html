@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔄 LIMPANDO CACHE - NutriGest</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #ef4444, #f97316, #eab308);
+            color: white;
+            text-align: center;
+        }
+        .container {
+            padding: 3rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 1rem;
+            backdrop-filter: blur(10px);
+            max-width: 500px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .loading {
+            font-size: 1.2rem;
+            margin: 2rem 0;
+        }
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid white;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .instructions {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 2rem 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .redirect-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #10b981;
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .redirect-btn:hover {
+            background: #059669;
+            transform: scale(1.05);
+        }
+        .warning {
+            background: rgba(239, 68, 68, 0.3);
+            border: 1px solid rgba(239, 68, 68, 0.5);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧹 LIMPANDO CACHE</h1>
+        <div class="spinner"></div>
+        <div class="loading">Removendo todos os arquivos antigos...</div>
+        
+        <div class="warning">
+            ⚠️ Isso vai remover completamente o cache do navegador para este site
+        </div>
+
+        <div class="instructions">
+            <strong>📋 O que está sendo feito:</strong><br>
+            • Removendo Service Workers antigos<br>
+            • Limpando todos os caches<br>
+            • Deletando arquivos temporários<br>
+            • Forçando atualização completa
+        </div>
+
+        <div id="countdown" style="font-size: 1.5rem; font-weight: bold; color: #fbbf24;"></div>
+        
+        <a href="#" id="redirectBtn" class="redirect-btn" style="display: none;">
+            🚀 ACESSAR NUTRIGEST ATUALIZADO
+        </a>
+    </div>
+
+    <script>
+        // LIMPAGEM TOTAL DO CACHE
+        
+        // 1. Remover todos os Service Workers
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                for (let registration of registrations) {
+                    registration.unregister();
+                }
+            });
+        }
+
+        // 2. Limpar todos os caches
+        if ('caches' in window) {
+            caches.keys().then(function(names) {
+                for (let name of names) {
+                    caches.delete(name);
+                }
+            });
+        }
+
+        // 3. Limpar localStorage e sessionStorage
+        localStorage.clear();
+        sessionStorage.clear();
+
+        // 4. Forçar headers de não-cache
+        fetch(window.location.href, {
+            method: 'GET',
+            headers: {
+                'Cache-Control': 'no-cache, no-store, must-revalidate',
+                'Pragma': 'no-cache',
+                'Expires': '0'
+            }
+        });
+
+        // 5. Contagem regressiva
+        let count = 5;
+        const countdownEl = document.getElementById('countdown');
+        const redirectBtn = document.getElementById('redirectBtn');
+        
+        const interval = setInterval(() => {
+            countdownEl.textContent = `Aguarde ${count} segundos...`;
+            count--;
+            
+            if (count < 0) {
+                clearInterval(interval);
+                countdownEl.style.display = 'none';
+                redirectBtn.style.display = 'inline-block';
+                
+                // Redirecionar automaticamente após mais 2 segundos
+                setTimeout(() => {
+                    window.location.href = 'https://traesms2lg1s.vercel.app?nocache=' + Date.now();
+                }, 2000);
+            }
+        }, 1000);
+
+        // 6. Redirecionamento manual
+        redirectBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'https://traesms2lg1s.vercel.app?nocache=' + Date.now();
+        });
+
+        // 7. Limpar histórico de navegação (tenta)
+        if (window.history && window.history.pushState) {
+            window.history.pushState('', '', window.location.href + '?cleared=true');
+        }
+    </script>
+</body>
+</html>
