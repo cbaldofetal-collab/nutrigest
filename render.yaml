@@ -1,7 +1,7 @@
 pode fazer
 services:
   - type: web
-    name: glicogest-api
+    name: nutrigest-api
     env: node
     rootDir: api
     plan: starter
